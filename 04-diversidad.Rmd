@@ -1,0 +1,148 @@
+# Medidas de Diversidad
+
+Una de las propiedades de las comunidades es la riqueza de especies, sin embargo, esta medida únicamente nos muestra una de las propiedades de la comunidad.  Una descripción más completa de la comunidad debería incluir la abundancia de las especies y el número de especies (la riqueza).
+
+Una de las formas más sencillas es desarrollar un modelo de rango de abundancia u obtener una medida de diversidad, un índice de diversidad.
+
+##Modelos de abundancia de especies
+
+El paquete _vegan_ tiene algunas funciones que nos permiten analizar la relación especies-abundancia, algunos de los más utilizados son los  modelos para la distribución de la abundancia de especies (rango de especies). 
+
+
+*Diagrama de rango de abundancia*
+
+El diagrama de rango de abundancia de especies nos permite  graficar las abundancias logarítmicas en orden decreciente, o en contra de los rangos de especies (Whittaker, 1965).
+
+La función __*radfit*__ contiene algunos de los modelos más populares (Wilson, 1991) los cuales utiliza estimadores de máxima verosimilitud. Algunos de los ajustes utilizados son Brokenstick, Preemption, Log-normal,  Zipf, Zipf-Mandelbrot.  No vamos a profundizar en estos por ahora pero comentaremos como implementarlos en R. Utilizaremos la función *radfit* para desarrollar el diagrama de rango de abundancia.  La función _radfit_ compara los modelos antes enumerados con el fin de evaluar el mejor ajuste, se utiliza el  criterio de información de Akaike (AIC) y Bayesianos o de Schwartz (BIC). Estos se basan en log-verosimilitud, pero penalizados por el número de parámetros estimados. La pena por parámetro es 2 en la AIC y log S en BIC. 
+
+Vamos a construir dos diagramas para dos parcelas del BCI y para los datos totales de la parcela de 50ha de BCI.
+
+```{r}
+library(vegan)
+data(BCI)
+
+pA<- BCI[3,] #escogemos una parcela cualquiera del BCI
+pB<- BCI[23,] #otra más
+pBCI<- colSums(BCI) #Los datos de todo BCI
+
+RpA<- radfit(pA)
+RpB<- radfit(pB)
+RpBCI<- radfit(pBCI)
+
+#¿Qué modelo ajusta mejor (tiene menor AIC)?. 
+#Revise los objetos generados 
+RpA; RpB; RpBCI
+```
+
+Como podemos ver el modelo que mejor ajusta (con AIC o BIC más bajo) es, en el caso de la parcela A y B, Mandelbrot y en el caso de los datos completos de la parcela del BCI es Lognormal.  Vamos a graficar estas funciones para poder observar las tendencias (Figura \@ref(fig:diag)).
+
+```{r diag, fig.height=4.5, fig.width=8, fig.cap="Rangos de abundancia de dos parcelas de BCI y del total de parcelas.", fig.margin=TRUE}
+
+par(mfcol=c(1,3))
+
+plot(RpA$models$Mandelbrot, xlim=c(0,250), pch=19, col="black", cex=0.6)
+plot(RpB$models$Mandelbrot, xlim=c(0,250), pch=19, col="black", cex=0.6)
+plot(RpBCI$models$Lognormal, xlim=c(0,250), pch=19, col="black", cex=0.6)
+```
+
+##Índices de Diversidad
+
+Los índices de diversidad son considerados como medidas de la varianza de la distribución de la abundancia de especies. Existen muchos índices desarrollados aunque seguramente el índice de Simpson y de Shannon son los más utilizados. 
+
+### Índice de Simpson
+
+El índice de Simpson _(D)_  tiene la tendencia de ser más pequeño cuando la comunidad es más _diversa_. _D_ es interpretado como la probabilidad de un encuentro intraespecífico, esto quiere decir la probabilidad de que si tomas dos individuos al azar de la comunidad ambos sean de la misma especie. Mientras más alta es esta probabilidad menos diversa es la comunidad (sensu Wallace).
+
+Vamos a ejemplificar para entender este concepto con una comunidad completamente equitativa, con 10 especies cada una de las cuales tiene una abundancia de 5. 
+
+```{r}
+#Generamos un vector con 10 especies, cada una con 5 individuos
+abun<- rep(5,10)
+
+#Sacamos la abundancia relativa
+rel<- abun/sum(abun)
+rel
+```
+
+A partir de estos datos podemos utilizar el índice de Simpson:
+
+$$
+D=\sum_{i=1}^S p_i^2
+$$
+
+Donde _S_ es el número de especies y _pi_ es la proporción de cada especie. 
+
+```{r}
+#calculamos el índice de Simpson
+D<- sum((rel)^2)
+D
+```
+Para evidenciar como _D_ (la probabilidad de un encuentro intraespecífico) aumenta cuando la comunidad es menos equitativa piensa en el ejemplo de una comunidad con una especie diez veces más abundante que las demás.
+
+
+```{r}
+#Generamos un vector con 10 especies, 1 con 50 individuos y el resto con 5 individuos
+abun2<- rep(c(50,5),c(1,9))
+#Sacamos la abundancia relativa
+rel2<- abun2/sum(abun2)
+rel2
+D2<- sum((rel2)^2)
+D2;D
+```
+
+
+Dado de que queremos un índice que aumenta con la diversidad en vez de disminuir, sería mejor si podemos interpretar el índice en una forma directa. Entonces es común usar el inverso del índice de Simpson
+
+__*invD=1-D*__
+
+```{r}
+invD<- 1-D
+invD2<- 1-D2
+invD;invD2
+```
+
+Como podemos ver ahora la comunidad con una repartición de la abundancia más equitativa (D) tiene un índice más alto (invD) que la comunidad con una especie dominante (D2).
+
+
+###El índice de Shannon
+
+El índice de Shannon _H_ mide más o menos lo mismo que el índice de Simpson, sin embargo, su lógica teórica está basada en teoría informática. Esto hace su interpretación un poco menos intuitiva. Sin ir a más detalle _H_ normalmente toma valores entre 1 y 4.5. Valores encima de 3 son típicamente interpretados como "diversos". Por razones que no son tan obvias como el caso de Simpson el máximo valor que puede tomar _H_ es el logaritmo de _S_ (número de especies), _ln(S)_. El índice de Shannon-Weaver es expresado como:
+
+$$
+H=-\sum_{i=1}^S p_ilog_bp_i
+$$
+
+
+Volveremos a utilizar las comunidades que generamos para testar el índice de Shannon con el fin de evaluar su comportamiento.
+
+```{r, fig.height=3, fig.width=3.5}
+H<- -sum((rel*(log(rel))))
+H2<- -sum((rel2*(log(rel2))))
+H;H2
+```
+
+Al igual que en el caso de Simpson, la comunidad más diversa es la comunidad con una menor dominancia. En la figura \@ref(fig:diver) vemos como varían los dos índices muestran que la comunidad más dominante representa el 75% de la comunidad equitativa según Shannon, mientras que en Simpson muestra que esta representa el 77%.
+
+
+```{r diver, fig.margin=TRUE, fig.align='center', fig.height=4.5, fig.width=4, fig.cap="índices de diversidad de Simpson (D y D2)  y de Shannon (H y H2) de dos comunidades con menor y mayor dominancia respectivamente."}
+##Vamos a generar un gráfico con los dos índices
+par(mar=c(2,2,1,1))
+div<- c(invD,invD2,H,H2)
+names(div)<- c("D","D2","H","H2")
+barplot(div, ylim=c(0,3), main="Variación de la diversidad",
+        cex.main=0.8, cex.axis=0.7, cex.names=0.7)
+```
+
+
+Aunque como vemos es muy sencillo realizar los índices de Shannon y Simpson podemos utilizar la función `diversity` para calcular los índices.
+
+```{r}
+diversity(abun2, "simpson")
+diversity(abun, "simpson")
+diversity(abun, "shannon")
+diversity(abun2, "shannon")
+```
+
+Existen otros índices que pueden ser explorados dentro de la función `diversity`.
+
+

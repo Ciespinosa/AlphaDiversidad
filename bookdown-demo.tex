@@ -1,0 +1,162 @@
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Medidas de Alpha Diversidad},
+            pdfauthor={Carlos Iván Espinosa},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Medidas de Alpha Diversidad}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{Carlos Iván Espinosa}
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  \date{Octubre de 2016}
+
+\usepackage{booktabs}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\chapter*{Preambulo}\label{preambulo}
+\addcontentsline{toc}{chapter}{Preambulo}
+
+A partir de la composición de especies de las comunidades naturales
+podemos extraer medidas que nos permite simplificar los datos de la
+comunidad obteniendo algunas de sus propiedades emergentes.
+
+Las comunidades cambian a lo largo del paisaje como una respuesta a las
+variaciones del ambiente, estos cambios en el paisaje han hecho
+necesario el separar los componentes de la diversidad de la comunidad.
+Según Whittaker (1972) podemos separar la diversidad en los componentes
+\emph{alfa, beta} y \emph{gamma}. La diversidad \emph{\textbf{alfa}} se
+refiere a la riqueza de especies que detectamos en una comunidad en un
+determinado sitio más o menos homogéneo. La diversidad
+\emph{\textbf{beta}} se refiere al grado de cambio o reemplazo de
+especies entre diferentes comunidades en un paisaje, y la diversidad
+\emph{\textbf{gamma}} se refiere a la riqueza de especies del conjunto
+de comunidades que integran un paisaje y es el resultado de las
+diversidades alfa y beta en el territorio (Whittaker, 1972).
+
+\marginnote{La diversidad puede ser separada en diversidad alfa, beta y gamma (Wittaker, 1972)}
+
+La diversidad alfa está constituida por la diversidad intrínseca de una
+comunidad bajo condiciones similares en un paisaje. Existen tres medidas
+de alfa diversidad; riqueza, equitatividad y diversidad.
+
+La riqueza, posiblemente la medida más sencilla, se refiere al número de
+especies en un determinado sitio independiente de las abundancias de
+cada una. Aunque la riqueza y los índices basados en esta son
+interesantes perdemos una parte de la información en estos índices, la
+abundancia.
+
+La equitatividad se refiere a la variabilidad en las abundancias
+relativas de cada una de las especies de la comunidad. Es una medida que
+nos permite entender el reparto de recursos entre las especies dentro de
+la comunidad, y por tanto cual es el aporte de cada una de las especies
+a la comunidad.
+
+Los índices de diversidad están basados en la relación entre
+equitatividad y riqueza. Aunque hay más de 60 índices publicados en
+revistas ecológicas los índices de Shannon-Weaver y de Simpson son los
+más comunes para medir alfa diversidad. La meta fundamental detrás del
+diseño de la mayoría de los índices de diversidad es unificar dos
+elementos de la diversidad, la equitatividad, o sea la variabilidad en
+las abundancias relativas de las especies de la comunidad, y la riqueza,
+o sea el número total de especies que componen la comunidad.
+
+\includegraphics{bookdown-demo_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+\chapter{Introduction}\label{intro}
+
+\chapter{Literature}\label{literature}
+
+\chapter{Methods}\label{methods}
+
+\chapter{Applications}\label{applications}
+
+\chapter{Final Words}\label{final-words}
+
+\chapter{Placeholder}\label{placeholder}
+
+\bibliography{book}
+
+
+\end{document}

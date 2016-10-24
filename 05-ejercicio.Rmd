@@ -1,0 +1,52 @@
+# Ejercicio Práctico 
+
+##Metodología
+
+En este ejercicio pretendemos estudiar una comunidad de aves a lo largo de 9 meses del año. Los datos de este trabajo puedes obtenerlos [aquí](https://github.com/Ciespinosa/datos_practicas/blob/master/Aves_temporal.xlsx)
+
+El objetivo principal de este estudio es entender como las variables ambientales temperatura y precipitación así como las variables bióticas (cantidad de frutos e insectos) afectan la riqueza y diversidad de especies. Adicionalmente, nos interesa determinar si nuestro esfuerzo de muestreo es suficiente para conocer la riqueza de aves de esta localidad.
+
+Este trabajo se lo desarrollo en la Reserva Ecológica Arenillas. Tres localidades separadas 200 metros entre sí fueron seleccionadas. Una vez por mes se muestrearon las aves utilizando 5 redes de neblina de 9 metros. 
+
+
+1. Con el ejercicio de la comunidad hipotética generada con y sin pastoreo. 
+
+  a. Incremente el muestreo a 10 parcelas para cada comunidad (unicamente cambie el objeto incrementando las filas y haga el muestreo dos veces más).
+  b. Realice una curva de rarefaccion basada en muestras. Se estabiliza la curva, es igual en las dos comunidades?
+  c. Obtenga estimadores de riqueza para cada comunidad.
+  d. ¿Cual es el efecto de la diferencia en la densidad de especies sobre los resultados? 
+
+
+2. Teniendo en cuenta que estamos comparando meses con diferentes densidades de individuos. ¿Cómo evaluarías las diferencias en riqueza de especies entre meses?
+  a.  ¿Cuántos individuos hemos muestreado en cada mes?
+  b.	¿Cuántas especies totales hemos detectado en cada mes?
+  c.	Explica los resultados del análisis que hayas decidido llevar a cabo.
+
+3.	Queremos saber si nuestro esfuerzo de muestreo ha sido suficiente para caracterizar la diversidad de especies de bosque seco en esta localidad y cuál sería en cada caso la riqueza de especies máxima esperable. Podríamos ver si el muestreo fue suficiente para la estación seca y para la estación lluviosa.
+
+  a. Calcular la rarefacción basada en individuos y en muestras para el bosque en general.
+  b. Hacer un gráfico con las curvas de rarefacción e incluya dos estimadores de riqueza.
+  c. Calcular la rarefacción basada en individuos y en muestras para la estación seca y lluviosa.
+  d. Hacer un gráfico con las curvas de rarefacción e incluya dos estimadores de riqueza para cada estación.
+  e. ¿Qué podemos concluir de este análisis?
+
+
+4.	¿Existen diferencias entre las comunidades de cada mes en cuanto a densidad de especies? y en cuanto a equitatividad y diversidad? 
+
+  a. Calcula la riqueza, el índice de equitatividad y diversidad que elijas para CADA MUESTRA (mes).
+
+5. Los diagramas de rango de abundancia nos da información de la equitatividad y la riqueza, tienen patrones de dominancia distintos a lo largo de los meses? y entre estaciones?
+
+  a. Ajusta curvas a cada mes
+  b. Grafica las comunidades con el mejor ajuste y analiza los patrones observados.
+  c. Ajusta curvas por cada estación y analiza los resultados.
+
+6. Relaciona las variables abióticas y bióticas con los índices evaluados utilizando un análisis de correlación de Pearson.
+
+##Resultados
+
+Organiza la información que ha obtenido de cada uno de estos pasos. Dale un orden lógico que permita responder la pregunta general planteada.
+
+##Conclusiones
+
+Redacta brevemente las conclusiones que has podido obtener de los análisis desarrollados.
