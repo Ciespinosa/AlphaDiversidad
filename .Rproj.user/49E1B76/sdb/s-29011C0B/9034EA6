@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Comparando muestras\n\nLo que hemos hecho hasta ahora es evaluar nuestro muestreo en general, como éste se comporta con diferente tamaño de muestras o individuos.  Pero normalmente lo que nos interesa es comparar entre localidades con diferente condición, seguimos teniendo el problema de que cada parcela tiene un tamaño distinto, lo que puede afectar a la riqueza. \n\nPara comparar la riqueza necesitamos hacer la rarefacción basada en individuos, utilizaremos el valor de abundancia de la parcela con menos individuos. Para esto volvemos a utilizar la función `rarefy´.\n\n```{r}\nR.rar <- rarefy(BCI_sub, min(rowSums(BCI_sub)), se=TRUE)\nR.rar\n```\n\nEn el objeto _R.rar_ tenemos la riqueza interpolada (con rarefacción) de cada una de las parcelas, el valor utilizado para hacer la rarefacción es la abundancia de la parcela con menos individuos, en este caso 402 individuos. \n\nVamos a generar un gráfico en el cual podamos comparar la riqueza total de las parcelas del BCI, calcularemos la riqueza de cada parcela con la función `specnumber` del paquete _vegan_ y la riqueza estimada con rarefacción con su desviación estándar (Figura \\@ref(fig:rpar)).\n\n```{r rpar, fig.height=5.5, fig.width=5, warning=FALSE, fig.margin=TRUE, fig.cap= \"Comparación entre medidas de a. riqueza observada y b. riqueza obtenida en base a rarefacción con su desviación estándar.\"}\npar(mfcol=c(2,1), oma=c(2,1,1,1), mar=c(3,3,1,1))\n\nRt<- specnumber(BCI_sub)\nbarplot(Rt, ylim=c(0,120), col=\"grey30\", cex.main=0.8,\n         cex.names=0.7, cex.axis=0.7, mgp=c(2, 0.35, 0))\nmtext(\"a) Riqueza total por parcela\", side=3, cex=0.8)\nmtext(\"Número de especies\", side =2, at=0, line=2, cex=0.8)\n\nx<-(barplot(R.rar[1,], ylim=c(0,120), col=\"grey30\", \n            cex.main=0.8, cex.axis=0.7, cex.names=0.7, mgp=c(2, 0.35, 0), \n            xlab=\"Sitios\", cex.lab=0.8))\nmtext(\"b) Riqueza con rarefacción basada en individuos por parcela\", side =3, cex=0.8)\n\narrows(x,R.rar[1,] - 2 * R.rar[2,], x,R.rar[1,] + 2 * R.rar[2,], length=0.05,angle=90,code=3)\n```\n\n\nComo podemos ver en la figura \\@ref(fig:rpar), al comparar la riqueza entre las diferentes parcelas el patrón se mantiene entre los datos reales y los datos de la rarefacción, sin embargo, en algunos casos las diferencias se hacen más evidentes. Y las conclusiones que podemos obtener son más sólidas.\n\n\n",
+    "created" : 1477359898748.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3303099321",
+    "id" : "9034EA6",
+    "lastKnownWriteTime" : 1477267687,
+    "last_content_update" : 1477267687,
+    "path" : "~/GitHub/AlphaDiversidad/03-rar_plot.Rmd",
+    "project_path" : "03-rar_plot.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

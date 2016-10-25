@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Ejercicio Práctico \n\n##Metodología\n\nEn este ejercicio pretendemos estudiar una comunidad de aves a lo largo de 9 meses del año. Los datos de este trabajo puedes obtenerlos [aquí](https://github.com/Ciespinosa/datos_practicas/blob/master/Aves_temporal.xlsx)\n\nEl objetivo principal de este estudio es entender como las variables ambientales temperatura y precipitación así como las variables bióticas (cantidad de frutos e insectos) afectan la riqueza y diversidad de especies. Adicionalmente, nos interesa determinar si nuestro esfuerzo de muestreo es suficiente para conocer la riqueza de aves de esta localidad.\n\nEste trabajo se lo desarrollo en la Reserva Ecológica Arenillas. Tres localidades separadas 200 metros entre sí fueron seleccionadas. Una vez por mes se muestrearon las aves utilizando 5 redes de neblina de 9 metros. \n\n\n1. Con el ejercicio de la comunidad hipotética generada con y sin pastoreo. \n\n  a. Incremente el muestreo a 10 parcelas para cada comunidad (unicamente cambie el objeto incrementando las filas y haga el muestreo dos veces más).\n  b. Realice una curva de rarefaccion basada en muestras. Se estabiliza la curva, es igual en las dos comunidades?\n  c. Obtenga estimadores de riqueza para cada comunidad.\n  d. ¿Cual es el efecto de la diferencia en la densidad de especies sobre los resultados? \n\n\n2. Teniendo en cuenta que estamos comparando meses con diferentes densidades de individuos. ¿Cómo evaluarías las diferencias en riqueza de especies entre meses?\n  a.  ¿Cuántos individuos hemos muestreado en cada mes?\n  b.\t¿Cuántas especies totales hemos detectado en cada mes?\n  c.\tExplica los resultados del análisis que hayas decidido llevar a cabo.\n\n3.\tQueremos saber si nuestro esfuerzo de muestreo ha sido suficiente para caracterizar la diversidad de especies de bosque seco en esta localidad y cuál sería en cada caso la riqueza de especies máxima esperable. Podríamos ver si el muestreo fue suficiente para la estación seca y para la estación lluviosa.\n\n  a. Calcular la rarefacción basada en individuos y en muestras para el bosque en general.\n  b. Hacer un gráfico con las curvas de rarefacción e incluya dos estimadores de riqueza.\n  c. Calcular la rarefacción basada en individuos y en muestras para la estación seca y lluviosa.\n  d. Hacer un gráfico con las curvas de rarefacción e incluya dos estimadores de riqueza para cada estación.\n  e. ¿Qué podemos concluir de este análisis?\n\n\n4.\t¿Existen diferencias entre las comunidades de cada mes en cuanto a densidad de especies? y en cuanto a equitatividad y diversidad? \n\n  a. Calcula la riqueza, el índice de equitatividad y diversidad que elijas para CADA MUESTRA (mes).\n\n5. Los diagramas de rango de abundancia nos da información de la equitatividad y la riqueza, tienen patrones de dominancia distintos a lo largo de los meses? y entre estaciones?\n\n  a. Ajusta curvas a cada mes\n  b. Grafica las comunidades con el mejor ajuste y analiza los patrones observados.\n  c. Ajusta curvas por cada estación y analiza los resultados.\n\n6. Relaciona las variables abióticas y bióticas con los índices evaluados utilizando un análisis de correlación de Pearson.\n\n##Resultados\n\nOrganiza la información que ha obtenido de cada uno de estos pasos. Dale un orden lógico que permita responder la pregunta general planteada.\n\n##Conclusiones\n\nRedacta brevemente las conclusiones que has podido obtener de los análisis desarrollados.\n",
+    "created" : 1477359875611.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2854122103",
+    "id" : "373B526F",
+    "lastKnownWriteTime" : 1477268847,
+    "last_content_update" : 1477268847,
+    "path" : "~/GitHub/AlphaDiversidad/05-ejercicio.Rmd",
+    "project_path" : "05-ejercicio.Rmd",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

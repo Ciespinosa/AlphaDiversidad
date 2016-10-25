@@ -162,40 +162,57 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Esto representa un inconveniente, ya que muestreos en principio del mismo tamaño, podrían capturar números significativamente diferentes de individuos. Pensemos que una red para aves podría capturar 150 individuos en un sitio y 25 en otro. Cuan comparables serían estos datos si sabemos que el tamaño de la muestra influye en la cantidad de especies colectadas.</p>
 <p>De esta manera, necesitamos separar dos conceptos distintos, la densidad de especies de la riqueza de especies. Imaginemos dos área cualquiera donde vamos a muestrear la vegetación, estas dos áreas únicamente se diferencian porque en la una existe pastoreo y en la otra no. Vemos que pasa cuando muestreamos cada una de estas comunidades.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Generamos unas comunidades</span>
-pas &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">sp =</span> <span class="kw">paste</span>(<span class="kw">rep</span>(<span class="st">&quot;sp&quot;</span>, <span class="dv">30</span>), <span class="dv">1</span>:<span class="dv">30</span>, <span class="dt">sep=</span><span class="st">&quot;-&quot;</span>), <span class="dt">abun=</span> <span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">12</span>, <span class="dv">30</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>))
-pas1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">40</span>,<span class="dv">30</span>)
+pas &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">sp =</span> <span class="kw">paste</span>(<span class="kw">rep</span>(<span class="st">&quot;sp&quot;</span>, <span class="dv">30</span>), <span class="dv">1</span>:<span class="dv">30</span>, <span class="dt">sep=</span><span class="st">&quot;-&quot;</span>), 
+                   <span class="dt">abun=</span> <span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">8</span>, <span class="dv">30</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>))
+pas1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">50</span>,<span class="dv">30</span>)
 <span class="kw">colnames</span>(pas1) &lt;-<span class="st"> </span>pas[,<span class="dv">1</span>]
 for(i in <span class="dv">1</span>:<span class="dv">30</span>){
-pas1[,i] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, pas[i,<span class="dv">2</span>]), <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">40</span>-pas[i,<span class="dv">2</span>]))
+pas1[,i] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, pas[i,<span class="dv">2</span>]), <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">50</span>-pas[i,<span class="dv">2</span>]))
 }
-pas1 &lt;-<span class="st"> </span>pas1[<span class="kw">order</span>(<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">40</span>, <span class="dv">30</span>)), ]
+pas1 &lt;-<span class="st"> </span>pas1[<span class="kw">order</span>(<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dv">50</span>)), ]
 
-npas &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">sp =</span> <span class="kw">paste</span>(<span class="kw">rep</span>(<span class="st">&quot;sp&quot;</span>, <span class="dv">30</span>), <span class="dv">1</span>:<span class="dv">30</span>, <span class="dt">sep=</span><span class="st">&quot;-&quot;</span>), <span class="dt">abun=</span> <span class="kw">sample</span>(<span class="dv">30</span>:<span class="dv">40</span>, <span class="dv">30</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>))
-npas1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">40</span>,<span class="dv">30</span>)
+npas &lt;-<span class="st"> </span><span class="kw">data.frame</span>( <span class="dt">sp =</span> <span class="kw">paste</span>(<span class="kw">rep</span>(<span class="st">&quot;sp&quot;</span>, <span class="dv">30</span>), <span class="dv">1</span>:<span class="dv">30</span>, <span class="dt">sep=</span><span class="st">&quot;-&quot;</span>), 
+                    <span class="dt">abun=</span> <span class="kw">sample</span>(<span class="dv">15</span>:<span class="dv">18</span>, <span class="dv">30</span>, <span class="dt">replace=</span><span class="ot">TRUE</span>))
+npas1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>, <span class="dv">50</span>,<span class="dv">30</span>)
 <span class="kw">colnames</span>(npas1) &lt;-<span class="st"> </span>npas[,<span class="dv">1</span>]
 for(i in <span class="dv">1</span>:<span class="dv">30</span>){
-npas1[,i] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, npas[i,<span class="dv">2</span>]), <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">40</span>-npas[i,<span class="dv">2</span>]))
+npas1[,i] &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>, npas[i,<span class="dv">2</span>]), <span class="kw">rep</span>(<span class="dv">0</span>, <span class="dv">50</span>-npas[i,<span class="dv">2</span>]))
 }
-npas1 &lt;-<span class="st"> </span>npas1[<span class="kw">order</span>(<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">20</span>, <span class="dv">20</span>)), ]
+npas1 &lt;-<span class="st"> </span>npas1[<span class="kw">order</span>(<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dv">50</span>)), ]
 
 <span class="co">#Ahora las muestreamos</span>
+
+<span class="co">#muestrar pastoreado</span>
 m_pas &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">30</span>)
 <span class="kw">colnames</span>(m_pas) &lt;-<span class="st"> </span><span class="kw">colnames</span>(pas1)
-m_pas[<span class="dv">1</span>,] &lt;-<span class="st"> </span><span class="kw">sample</span>(pas1, <span class="dv">30</span>)
-m_pas[<span class="dv">2</span>,] &lt;-<span class="st"> </span><span class="kw">sample</span>(pas1, <span class="dv">30</span>)
-m_pas[<span class="dv">3</span>,] &lt;-<span class="st"> </span><span class="kw">sample</span>(pas1, <span class="dv">30</span>)
+for(i in <span class="dv">1</span>:<span class="dv">30</span>) {
+m_pas[<span class="dv">1</span>,i] &lt;-<span class="st"> </span>pas1[<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dv">1</span>),i]
+}
+for(i in <span class="dv">1</span>:<span class="dv">30</span>) {
+m_pas[<span class="dv">2</span>,i] &lt;-<span class="st"> </span>pas1[<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dv">1</span>),i]
+}
+for(i in <span class="dv">1</span>:<span class="dv">30</span>) {
+m_pas[<span class="dv">3</span>,i] &lt;-<span class="st"> </span>pas1[<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dv">1</span>),i]
+}
 
+<span class="co">#muestrar no pastoreado</span>
 m_npas &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">30</span>)
 <span class="kw">colnames</span>(m_npas) &lt;-<span class="st"> </span><span class="kw">colnames</span>(pas1)
-m_npas[<span class="dv">1</span>,] &lt;-<span class="st"> </span><span class="kw">sample</span>(npas1, <span class="dv">30</span>)
-m_npas[<span class="dv">2</span>,] &lt;-<span class="st"> </span><span class="kw">sample</span>(npas1, <span class="dv">30</span>)
-m_npas[<span class="dv">3</span>,] &lt;-<span class="st"> </span><span class="kw">sample</span>(npas1, <span class="dv">30</span>)
+for(i in <span class="dv">1</span>:<span class="dv">30</span>) {
+m_npas[<span class="dv">1</span>,i] &lt;-<span class="st"> </span>npas1[<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dv">1</span>),i]
+}
+for(i in <span class="dv">1</span>:<span class="dv">30</span>) {
+m_npas[<span class="dv">2</span>,i] &lt;-<span class="st"> </span>npas1[<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dv">1</span>),i]
+}
+for(i in <span class="dv">1</span>:<span class="dv">30</span>) {
+m_npas[<span class="dv">3</span>,i] &lt;-<span class="st"> </span>npas1[<span class="kw">sample</span>(<span class="dv">1</span>:<span class="dv">50</span>, <span class="dv">1</span>),i]
+}
 
 <span class="co">#Calculamos la riqueza de las muestras</span>
 <span class="kw">specnumber</span>(<span class="kw">colSums</span>(m_pas)) <span class="co">#Pastoreado</span></code></pre></div>
-<pre><code>## [1] 15</code></pre>
+<pre><code>## [1] 3</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">specnumber</span>(<span class="kw">colSums</span>(m_npas))<span class="co">#No Pastoreado</span></code></pre></div>
-<pre><code>## [1] 30</code></pre>
+<pre><code>## [1] 24</code></pre>
 <p>Como vemos por puro azar la diversidad es mucho mayor en las parcelas no pastoreadas, pero realmente hay mayor diversidad? Obtengamos la diversidad total de cada comunidad.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">specnumber</span>(<span class="kw">colSums</span>(pas1))<span class="co">#Pastoreado</span></code></pre></div>
 <pre><code>## [1] 30</code></pre>
@@ -246,14 +263,14 @@ rand</code></pre></div>
 ## Accumulation method: random, with 100 permutations
 ## Call: specaccum(comm = BCI_sub, method = &quot;random&quot;, permutations = 100) 
 ## 
-##                                                                  
-## Sites     1.0000   2.00000   3.0000   4.00000   5.00000   6.00000
-## Richness 93.3300 124.78000 141.4300 152.30000 160.12000 165.88000
-## sd        7.8728   8.25794   6.8803   5.54959   4.60408   3.62728
-##                                         
-## Sites      7.00000   8.0000   9.0000  10
-## Richness 170.60000 174.0600 177.3000 180
-## sd         2.77434   2.4197   1.6112   0</code></pre>
+##                                                                   
+## Sites     1.00000   2.00000   3.00000   4.00000   5.0000   6.00000
+## Richness 93.60000 124.80000 141.35000 152.26000 159.8400 165.64000
+## sd        7.89067   8.26579   7.06303   5.71304   4.7984   3.71869
+##                                           
+## Sites      7.00000   8.00000   9.00000  10
+## Richness 170.45000 173.98000 177.35000 180
+## sd         2.90028   2.52254   1.57233   0</code></pre>
 <p>En este caso lo que vemos es que con una sola muestra tendríamos 92.55 especies, con dos parcelas tendríamos 123.9 especies, y así sucesivamente como podemos ver aparentemente la curva tiende a estabilizarse a partir de la parcela 7.</p>
 </div>
 <div id="estimadores-de-riqueza" class="section level2">

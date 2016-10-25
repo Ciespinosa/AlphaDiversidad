@@ -304,34 +304,51 @@ pasa cuando muestreamos cada una de estas comunidades.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{#Generamos unas comunidades}
-\NormalTok{pas <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{( }\DataTypeTok{sp =} \KeywordTok{paste}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\StringTok{"sp"}\NormalTok{, }\DecValTok{30}\NormalTok{), }\DecValTok{1}\NormalTok{:}\DecValTok{30}\NormalTok{, }\DataTypeTok{sep=}\StringTok{"-"}\NormalTok{), }\DataTypeTok{abun=} \KeywordTok{sample}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{12}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DataTypeTok{replace=}\OtherTok{TRUE}\NormalTok{))}
-\NormalTok{pas1 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{40}\NormalTok{,}\DecValTok{30}\NormalTok{)}
+\NormalTok{pas <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{( }\DataTypeTok{sp =} \KeywordTok{paste}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\StringTok{"sp"}\NormalTok{, }\DecValTok{30}\NormalTok{), }\DecValTok{1}\NormalTok{:}\DecValTok{30}\NormalTok{, }\DataTypeTok{sep=}\StringTok{"-"}\NormalTok{), }
+                   \DataTypeTok{abun=} \KeywordTok{sample}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{8}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DataTypeTok{replace=}\OtherTok{TRUE}\NormalTok{))}
+\NormalTok{pas1 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{,}\DecValTok{30}\NormalTok{)}
 \KeywordTok{colnames}\NormalTok{(pas1) <-}\StringTok{ }\NormalTok{pas[,}\DecValTok{1}\NormalTok{]}
 \NormalTok{for(i in }\DecValTok{1}\NormalTok{:}\DecValTok{30}\NormalTok{)\{}
-\NormalTok{pas1[,i] <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, pas[i,}\DecValTok{2}\NormalTok{]), }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{40}\NormalTok{-pas[i,}\DecValTok{2}\NormalTok{]))}
+\NormalTok{pas1[,i] <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, pas[i,}\DecValTok{2}\NormalTok{]), }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{-pas[i,}\DecValTok{2}\NormalTok{]))}
 \NormalTok{\}}
-\NormalTok{pas1 <-}\StringTok{ }\NormalTok{pas1[}\KeywordTok{order}\NormalTok{(}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{40}\NormalTok{, }\DecValTok{30}\NormalTok{)), ]}
+\NormalTok{pas1 <-}\StringTok{ }\NormalTok{pas1[}\KeywordTok{order}\NormalTok{(}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{50}\NormalTok{, }\DecValTok{50}\NormalTok{)), ]}
 
-\NormalTok{npas <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{( }\DataTypeTok{sp =} \KeywordTok{paste}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\StringTok{"sp"}\NormalTok{, }\DecValTok{30}\NormalTok{), }\DecValTok{1}\NormalTok{:}\DecValTok{30}\NormalTok{, }\DataTypeTok{sep=}\StringTok{"-"}\NormalTok{), }\DataTypeTok{abun=} \KeywordTok{sample}\NormalTok{(}\DecValTok{30}\NormalTok{:}\DecValTok{40}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DataTypeTok{replace=}\OtherTok{TRUE}\NormalTok{))}
-\NormalTok{npas1 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{40}\NormalTok{,}\DecValTok{30}\NormalTok{)}
+\NormalTok{npas <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{( }\DataTypeTok{sp =} \KeywordTok{paste}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\StringTok{"sp"}\NormalTok{, }\DecValTok{30}\NormalTok{), }\DecValTok{1}\NormalTok{:}\DecValTok{30}\NormalTok{, }\DataTypeTok{sep=}\StringTok{"-"}\NormalTok{), }
+                    \DataTypeTok{abun=} \KeywordTok{sample}\NormalTok{(}\DecValTok{15}\NormalTok{:}\DecValTok{18}\NormalTok{, }\DecValTok{30}\NormalTok{, }\DataTypeTok{replace=}\OtherTok{TRUE}\NormalTok{))}
+\NormalTok{npas1 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{,}\DecValTok{30}\NormalTok{)}
 \KeywordTok{colnames}\NormalTok{(npas1) <-}\StringTok{ }\NormalTok{npas[,}\DecValTok{1}\NormalTok{]}
 \NormalTok{for(i in }\DecValTok{1}\NormalTok{:}\DecValTok{30}\NormalTok{)\{}
-\NormalTok{npas1[,i] <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, npas[i,}\DecValTok{2}\NormalTok{]), }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{40}\NormalTok{-npas[i,}\DecValTok{2}\NormalTok{]))}
+\NormalTok{npas1[,i] <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, npas[i,}\DecValTok{2}\NormalTok{]), }\KeywordTok{rep}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{50}\NormalTok{-npas[i,}\DecValTok{2}\NormalTok{]))}
 \NormalTok{\}}
-\NormalTok{npas1 <-}\StringTok{ }\NormalTok{npas1[}\KeywordTok{order}\NormalTok{(}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{20}\NormalTok{, }\DecValTok{20}\NormalTok{)), ]}
+\NormalTok{npas1 <-}\StringTok{ }\NormalTok{npas1[}\KeywordTok{order}\NormalTok{(}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{50}\NormalTok{, }\DecValTok{50}\NormalTok{)), ]}
 
 \CommentTok{#Ahora las muestreamos}
+
+\CommentTok{#muestrar pastoreado}
 \NormalTok{m_pas <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{30}\NormalTok{)}
 \KeywordTok{colnames}\NormalTok{(m_pas) <-}\StringTok{ }\KeywordTok{colnames}\NormalTok{(pas1)}
-\NormalTok{m_pas[}\DecValTok{1}\NormalTok{,] <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(pas1, }\DecValTok{30}\NormalTok{)}
-\NormalTok{m_pas[}\DecValTok{2}\NormalTok{,] <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(pas1, }\DecValTok{30}\NormalTok{)}
-\NormalTok{m_pas[}\DecValTok{3}\NormalTok{,] <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(pas1, }\DecValTok{30}\NormalTok{)}
+\NormalTok{for(i in }\DecValTok{1}\NormalTok{:}\DecValTok{30}\NormalTok{) \{}
+\NormalTok{m_pas[}\DecValTok{1}\NormalTok{,i] <-}\StringTok{ }\NormalTok{pas1[}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{50}\NormalTok{, }\DecValTok{1}\NormalTok{),i]}
+\NormalTok{\}}
+\NormalTok{for(i in }\DecValTok{1}\NormalTok{:}\DecValTok{30}\NormalTok{) \{}
+\NormalTok{m_pas[}\DecValTok{2}\NormalTok{,i] <-}\StringTok{ }\NormalTok{pas1[}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{50}\NormalTok{, }\DecValTok{1}\NormalTok{),i]}
+\NormalTok{\}}
+\NormalTok{for(i in }\DecValTok{1}\NormalTok{:}\DecValTok{30}\NormalTok{) \{}
+\NormalTok{m_pas[}\DecValTok{3}\NormalTok{,i] <-}\StringTok{ }\NormalTok{pas1[}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{50}\NormalTok{, }\DecValTok{1}\NormalTok{),i]}
+\NormalTok{\}}
 
+\CommentTok{#muestrar no pastoreado}
 \NormalTok{m_npas <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{30}\NormalTok{)}
 \KeywordTok{colnames}\NormalTok{(m_npas) <-}\StringTok{ }\KeywordTok{colnames}\NormalTok{(pas1)}
-\NormalTok{m_npas[}\DecValTok{1}\NormalTok{,] <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(npas1, }\DecValTok{30}\NormalTok{)}
-\NormalTok{m_npas[}\DecValTok{2}\NormalTok{,] <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(npas1, }\DecValTok{30}\NormalTok{)}
-\NormalTok{m_npas[}\DecValTok{3}\NormalTok{,] <-}\StringTok{ }\KeywordTok{sample}\NormalTok{(npas1, }\DecValTok{30}\NormalTok{)}
+\NormalTok{for(i in }\DecValTok{1}\NormalTok{:}\DecValTok{30}\NormalTok{) \{}
+\NormalTok{m_npas[}\DecValTok{1}\NormalTok{,i] <-}\StringTok{ }\NormalTok{npas1[}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{50}\NormalTok{, }\DecValTok{1}\NormalTok{),i]}
+\NormalTok{\}}
+\NormalTok{for(i in }\DecValTok{1}\NormalTok{:}\DecValTok{30}\NormalTok{) \{}
+\NormalTok{m_npas[}\DecValTok{2}\NormalTok{,i] <-}\StringTok{ }\NormalTok{npas1[}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{50}\NormalTok{, }\DecValTok{1}\NormalTok{),i]}
+\NormalTok{\}}
+\NormalTok{for(i in }\DecValTok{1}\NormalTok{:}\DecValTok{30}\NormalTok{) \{}
+\NormalTok{m_npas[}\DecValTok{3}\NormalTok{,i] <-}\StringTok{ }\NormalTok{npas1[}\KeywordTok{sample}\NormalTok{(}\DecValTok{1}\NormalTok{:}\DecValTok{50}\NormalTok{, }\DecValTok{1}\NormalTok{),i]}
+\NormalTok{\}}
 
 \CommentTok{#Calculamos la riqueza de las muestras}
 \KeywordTok{specnumber}\NormalTok{(}\KeywordTok{colSums}\NormalTok{(m_pas)) }\CommentTok{#Pastoreado}
@@ -339,7 +356,7 @@ pasa cuando muestreamos cada una de estas comunidades.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 15
+## [1] 3
 \end{verbatim}
 
 \begin{Shaded}
@@ -349,7 +366,7 @@ pasa cuando muestreamos cada una de estas comunidades.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 30
+## [1] 24
 \end{verbatim}
 
 Como vemos por puro azar la diversidad es mucho mayor en las parcelas no
@@ -492,14 +509,14 @@ muestra.
 ## Accumulation method: random, with 100 permutations
 ## Call: specaccum(comm = BCI_sub, method = "random", permutations = 100) 
 ## 
-##                                                                  
-## Sites     1.0000   2.00000   3.0000   4.00000   5.00000   6.00000
-## Richness 93.3300 124.78000 141.4300 152.30000 160.12000 165.88000
-## sd        7.8728   8.25794   6.8803   5.54959   4.60408   3.62728
-##                                         
-## Sites      7.00000   8.0000   9.0000  10
-## Richness 170.60000 174.0600 177.3000 180
-## sd         2.77434   2.4197   1.6112   0
+##                                                                   
+## Sites     1.00000   2.00000   3.00000   4.00000   5.0000   6.00000
+## Richness 93.60000 124.80000 141.35000 152.26000 159.8400 165.64000
+## sd        7.89067   8.26579   7.06303   5.71304   4.7984   3.71869
+##                                           
+## Sites      7.00000   8.00000   9.00000  10
+## Richness 170.45000 173.98000 177.35000 180
+## sd         2.90028   2.52254   1.57233   0
 \end{verbatim}
 
 En este caso lo que vemos es que con una sola muestra tendríamos 92.55

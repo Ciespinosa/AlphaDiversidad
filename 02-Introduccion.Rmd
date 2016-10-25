@@ -45,34 +45,51 @@ De esta manera, necesitamos separar dos conceptos distintos, la densidad de espe
 
 ```{r}
 #Generamos unas comunidades
-pas <- data.frame( sp = paste(rep("sp", 30), 1:30, sep="-"), abun= sample(1:12, 30, replace=TRUE))
-pas1 <- matrix(0, 40,30)
+pas <- data.frame( sp = paste(rep("sp", 30), 1:30, sep="-"), 
+                   abun= sample(1:8, 30, replace=TRUE))
+pas1 <- matrix(0, 50,30)
 colnames(pas1) <- pas[,1]
 for(i in 1:30){
-pas1[,i] <- c(rep(1, pas[i,2]), rep(0, 40-pas[i,2]))
+pas1[,i] <- c(rep(1, pas[i,2]), rep(0, 50-pas[i,2]))
 }
-pas1 <- pas1[order(sample(1:40, 30)), ]
+pas1 <- pas1[order(sample(1:50, 50)), ]
 
-npas <- data.frame( sp = paste(rep("sp", 30), 1:30, sep="-"), abun= sample(30:40, 30, replace=TRUE))
-npas1 <- matrix(0, 40,30)
+npas <- data.frame( sp = paste(rep("sp", 30), 1:30, sep="-"), 
+                    abun= sample(15:18, 30, replace=TRUE))
+npas1 <- matrix(0, 50,30)
 colnames(npas1) <- npas[,1]
 for(i in 1:30){
-npas1[,i] <- c(rep(1, npas[i,2]), rep(0, 40-npas[i,2]))
+npas1[,i] <- c(rep(1, npas[i,2]), rep(0, 50-npas[i,2]))
 }
-npas1 <- npas1[order(sample(1:20, 20)), ]
+npas1 <- npas1[order(sample(1:50, 50)), ]
 
 #Ahora las muestreamos
+
+#muestrar pastoreado
 m_pas <- matrix(0,3,30)
 colnames(m_pas) <- colnames(pas1)
-m_pas[1,] <- sample(pas1, 30)
-m_pas[2,] <- sample(pas1, 30)
-m_pas[3,] <- sample(pas1, 30)
+for(i in 1:30) {
+m_pas[1,i] <- pas1[sample(1:50, 1),i]
+}
+for(i in 1:30) {
+m_pas[2,i] <- pas1[sample(1:50, 1),i]
+}
+for(i in 1:30) {
+m_pas[3,i] <- pas1[sample(1:50, 1),i]
+}
 
+#muestrar no pastoreado
 m_npas <- matrix(0,3,30)
 colnames(m_npas) <- colnames(pas1)
-m_npas[1,] <- sample(npas1, 30)
-m_npas[2,] <- sample(npas1, 30)
-m_npas[3,] <- sample(npas1, 30)
+for(i in 1:30) {
+m_npas[1,i] <- npas1[sample(1:50, 1),i]
+}
+for(i in 1:30) {
+m_npas[2,i] <- npas1[sample(1:50, 1),i]
+}
+for(i in 1:30) {
+m_npas[3,i] <- npas1[sample(1:50, 1),i]
+}
 
 #Calculamos la riqueza de las muestras
 specnumber(colSums(m_pas)) #Pastoreado
