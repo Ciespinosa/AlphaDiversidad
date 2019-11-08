@@ -1,10 +1,9 @@
-# Objetivos 
+# Objetivos {-}
 
 <p> <br> </p>
 
-- Comprender los factores que influencian la riqueza y diversidad de especies.
+- Comprender los factores que influencian la medición de la riqueza y diversidad de especies.
 
 <p> <br> </p>
 
-- Comprender los métodos para medir y describir  la riqueza y diversidad de las comunidades y su aplicación en el contexto de campo.
-
+- Implementar los métodos para medir y describir  la riqueza y diversidad de las comunidades y su aplicación en el contexto de campo.

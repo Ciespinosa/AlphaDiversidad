@@ -1,21 +1,20 @@
 --- 
 title: "Medidas de Alpha Diversidad"
 author: "Carlos Iván Espinosa"
-date: "Octubre de 2016"
+date: "Noviembre de 2019"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
 bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: rstudio/bookdown-demo
 description: "En este documento se presenta una lección sobre diversidad alfa"
 ---
 
 
 # Preambulo {-}
 
-A partir de la composición de especies de las comunidades naturales podemos extraer medidas que nos permite simplificar los datos de la comunidad obteniendo algunas de sus propiedades emergentes. 
+El describir patrones dentro de los datos biológicos es uno de los principales intereses de los ecólogos de comunidades. Sin embargo, las comunidades son complejas y están caracterizadas por una gran cantidad de variables, las especies. El rescatar los patrones a partir de esa estructura compleja tiene varias limitantes como lo vimos en el [análisis multivariante de la comunidad]( https://ciespinosa.github.io/AnalisisMultivariante/index.html), de esta forma el poder simplificar esta estructura compleja a través de índices que rescaten las propiedades emergentes de la comunidad es fundamental. 
 
 Las comunidades cambian a lo largo del paisaje como una respuesta a las variaciones del ambiente, estos cambios en el paisaje han hecho necesario el separar los componentes de la diversidad de la comunidad. Según Whittaker (1972)  podemos separar la diversidad en los componentes _alfa, beta_ y _gamma_. La diversidad _**alfa**_ se refiere a la riqueza de especies que detectamos en una comunidad en un determinado sitio más o menos homogéneo. La diversidad _**beta**_ se refiere al grado de cambio o reemplazo de especies entre diferentes comunidades en un paisaje, y la diversidad _**gamma**_ se refiere a la riqueza de especies del conjunto de comunidades que integran un paisaje y es el resultado de las diversidades alfa y beta en el territorio (Whittaker, 1972).
 
@@ -29,8 +28,9 @@ La riqueza, posiblemente la medida más sencilla, se refiere al número de espec
 
 La equitatividad se refiere a la variabilidad en las abundancias relativas de cada una de las especies de la comunidad.  Es una medida que nos permite entender el reparto de recursos entre las especies dentro de la comunidad, y por tanto cual es el aporte de cada una de las especies a la comunidad.
 
-Los índices de diversidad están basados en la relación entre equitatividad y riqueza. Aunque hay más de 60 índices publicados en revistas ecológicas los índices de Shannon-Weaver y de Simpson son los más comunes para medir alfa diversidad. La meta fundamental detrás del diseño de la mayoría de los índices de diversidad es unificar dos elementos de la diversidad, la equitatividad, o sea la variabilidad en las abundancias relativas de las especies de la comunidad, y la riqueza, o sea el número total de especies que componen la comunidad.
+Por otro lado, los índices de heterogeneidad están basados en la relación entre equitatividad y riqueza. Aunque hay más de 60 índices publicados en revistas ecológicas los índices de Shannon-Weaver y de Simpson son los más comunes para medir alfa diversidad. La meta fundamental detrás del diseño de la mayoría de los índices de heterogeneidad es unificar dos elementos de la diversidad, la equitatividad, o sea la variabilidad en las abundancias relativas de las especies de la comunidad, y la riqueza, o sea el número total de especies que componen la comunidad.
 
+En el presente ejercicio intentaremos profundizar sobre estos conceptos, las limitantes en sus cálculos así como el proceso para poder realizar los cálculos en R.
 
 
 

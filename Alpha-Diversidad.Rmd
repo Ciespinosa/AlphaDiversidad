@@ -1,3 +1,36 @@
+--- 
+title: "Medidas de Alpha Diversidad"
+author: "Carlos Iván Espinosa"
+date: "Noviembre de 2019"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib]
+biblio-style: apalike
+link-citations: yes
+description: "En este documento se presenta una lección sobre diversidad alfa"
+---
+
+# Preambulo {-}
+
+Placeholder
+
+
+
+<!--chapter:end:index.Rmd-->
+
+# Objetivos {-}
+
+<p> <br> </p>
+
+- Comprender los factores que influencian la medición de la riqueza y diversidad de especies.
+
+<p> <br> </p>
+
+- Implementar los métodos para medir y describir  la riqueza y diversidad de las comunidades y su aplicación en el contexto de campo.
+
+<!--chapter:end:01-Objetivo.Rmd-->
+
 
 # Riqueza total del muestreo
 
@@ -243,4 +276,39 @@ text(13, 232, dim(BCI)[2], cex=0.6)
 
 En la figura \@ref(fig:rar) podemos ver que nuestro muestreo es aceptable y que aunque no hemos capturado toda la riqueza del área los estimadores que utilizamos son aceptables. Es posible que en este caso la riqueza de jacknife sea un mejor estimador.  Pero recuerden que normalmente cuando hacemos un muestreo no tenemos el valor de riqueza total, por lo que no podemos saber cuan alejados estamos de la realidad.
 
+
+
+<!--chapter:end:02-Introduccion.Rmd-->
+
+
+# Comparando muestras
+
+Placeholder
+
+
+
+<!--chapter:end:03-rar_plot.Rmd-->
+
+
+# Medidas de Diversidad
+
+Placeholder
+
+
+### Índice de Simpson
+
+<!--chapter:end:04-diversidad.Rmd-->
+
+
+# Ejercicio Práctico 
+
+Placeholder
+
+
+
+<!--chapter:end:05-ejercicio.Rmd-->
+
+`r if (knitr:::is_html_output()) '# References {-}'`
+
+<!--chapter:end:06-references.Rmd-->
 
