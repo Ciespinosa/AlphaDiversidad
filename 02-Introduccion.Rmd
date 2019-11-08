@@ -1,5 +1,5 @@
 
-# Riqueza total del muestreo
+# Riqueza total y de muestreo
 
 
 La riqueza es definida como el número  de  especies  que  habitan  en  una  comunidad espacial y temporalmente homogénea. Posiblemente es la forma más directa y clara de medir la diversidad biológica (Sarkar, 2002; Magurran, 2004).  Sin embargo, medir la riqueza de forma  precisa no es una tarea sencilla (Magurran, 2004). Como ecólogos estamos interesados encontrar patrones en la riqueza total entre comunidades, a partir de una muestra de esa comunidad. De tal forma necesitamos asegurar que nuestra muestra es representativa de la comunidad. 
